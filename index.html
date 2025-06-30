@@ -60,6 +60,12 @@
             margin: 15px 0;
             border: none;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #003366;
+            transform: scale(1.05);
         }
 
         .section {
@@ -82,9 +88,15 @@
             padding: 15px;
             border-radius: 10px;
             background: #f9f9f9;
+            transition: transform 0.3s ease;
         }
 
-        .car-card h3, .car-card h4 {
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .car-card h3 {
             margin: 10px 0;
             color: #333;
         }
@@ -105,52 +117,52 @@
         <h2>Featured Vehicles</h2>
         <div class="gallery">
             <div class="car-card">
-                <img src="images/car5.jpeg" alt="Nissan Xtrail" class="car-image">
+                <img src="images/car5.jpeg" alt="Nissan Xtrail 2018" class="car-image">
                 <h3>Nissan Xtrail</h3>
                 <p>Year: 2018 | Price: Ksh 2,200,000</p>
-                <button onclick="buyCar(this)" class="button">Buy Now</button>
+                <button onclick="redirectToWhatsApp(this)" class="button">Buy Now</button>
             </div>
             
             <div class="car-card">
-                <img src="images/car6.jpeg" alt="Mazda Demio" class="car-image">
+                <img src="images/car6.jpeg" alt="Mazda Demio 2018" class="car-image">
                 <h3>Mazda Demio</h3>
                 <p>Year: 2018 | Price: Ksh 1,350,000</p>
-                <button onclick="buyCar(this)" class="button">Buy Now</button>
+                <button onclick="redirectToWhatsApp(this)" class="button">Buy Now</button>
             </div>
             
             <div class="car-card">
-                <img src="images/car3.jpeg" alt="Nissan Note" class="car-image">
+                <img src="images/car3.jpeg" alt="Nissan Note 2018" class="car-image">
                 <h3>Nissan Note</h3>
                 <p>Year: 2018 | Price: Ksh 1,250,000</p>
-                <button onclick="buyCar(this)" class="button">Buy Now</button>
+                <button onclick="redirectToWhatsApp(this)" class="button">Buy Now</button>
             </div>
             
             <div class="car-card">
-                <img src="images/car7.jpeg" alt="Suzuki Swift" class="car-image">
+                <img src="images/car7.jpeg" alt="Suzuki Swift 2017" class="car-image">
                 <h3>Suzuki Swift</h3>
                 <p>Year: 2017 | Price: Ksh 1,350,000</p>
-                <button onclick="buyCar(this)" class="button">Buy Now</button>
+                <button onclick="redirectToWhatsApp(this)" class="button">Buy Now</button>
             </div>
             
             <div class="car-card">
-                <img src="images/car4.jpeg" alt="Toyota Prado TX" class="car-image">
+                <img src="images/car4.jpeg" alt="Toyota Prado TX 2024" class="car-image">
                 <h3>Toyota Prado TX</h3>
                 <p>Year: 2024 | Price: Ksh 18,850,000</p>
-                <button onclick="buyCar(this)" class="button">Buy Now</button>
+                <button onclick="redirectToWhatsApp(this)" class="button">Buy Now</button>
             </div>
             
             <div class="car-card">
-                <img src="images/car8.jpeg" alt="Toyota Harrier" class="car-image">
+                <img src="images/car8.jpeg" alt="Toyota Harrier 2018" class="car-image">
                 <h3>Toyota Harrier</h3>
                 <p>Year: 2018 | Price: Ksh 3,700,000</p>
-                <button onclick="buyCar(this)" class="button">Buy Now</button>
+                <button onclick="redirectToWhatsApp(this)" class="button">Buy Now</button>
             </div>
             
             <div class="car-card">
-                <img src="images/car.jpeg" alt="Lexus LX600" class="car-image">
+                <img src="images/car.jpeg" alt="Lexus LX600 2024" class="car-image">
                 <h3>Lexus LX600</h3>
                 <p>Year: 2024 | Price: Ksh 31,350,000</p>
-                <button onclick="buyCar(this)" class="button">Buy Now</button>
+                <button onclick="redirectToWhatsApp(this)" class="button">Buy Now</button>
             </div>
         </div>
     </div>
@@ -162,17 +174,15 @@
     </div>
 
     <script>
-        function buyCar(button) {
+        function redirectToWhatsApp(button) {
             const carCard = button.closest('.car-card');
             const carName = carCard.querySelector('h3').textContent;
-            const carPrice = carCard.querySelector('p').textContent;
+            const carDetails = carCard.querySelector('p').textContent;
             
-            // Here you would typically redirect to a purchase page or show a modal
-            alert(`Thank you for your interest in the ${carName} (${carPrice}). Our team will contact you shortly.`);
+            const message = `Hello Al-Fadil Motors! I am interested in purchasing the ${carName} (${carDetails}). Please provide more information.`;
+            const whatsappUrl = `https://wa.me/254798555268?text=${encodeURIComponent(message)}`;
             
-            // Alternatively, open WhatsApp with a pre-filled message
-            // const message = `I'm interested in purchasing the ${carName} (${carPrice}).`;
-            // window.open(`https://wa.me/254798555268?text=${encodeURIComponent(message)}`, '_blank');
+            window.open(whatsappUrl, '_blank');
         }
     </script>
 </body>
